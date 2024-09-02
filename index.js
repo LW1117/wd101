@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", () => {
-  entries = JSON.parse(sessionStorage.getItem("user-entries")) || [];
+  entries = JSON.parse(localStorage.getItem("user-entries")) || [];
   refreshEntries()
 });
 
@@ -22,7 +22,7 @@ saveFormToStorage = () => {
   };
   if (checkValidity(userObj.dob, userObj.email)) {
     entries.push(userObj);
-    sessionStorage.setItem("user-entries", JSON.stringify(entries))
+    localStorage.setItem("user-entries", JSON.stringify(entries))
   };
 };
 
