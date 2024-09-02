@@ -46,7 +46,15 @@ checkValidity = (dob) => {
 
 // function to update the table with entries
 refreshEntries = () => {
-  tableEntry = ``
+  tableEntry = `<thead>
+          <tr>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Password</th>
+            <th>dob</th>
+            <th>accepted terms?</th>
+          </tr>
+        </thead>`
   entries.forEach((user) => {
     tableEntry += `<tr><td>${user.name}</td><td>${user.email}</td><td>${user.password}</td><td>${user.dob}</td><td>${user.terms}</td></tr>`
   });
