@@ -1,7 +1,9 @@
-userForm = document.getElementById('user-form');
+document.addEventListener("DOMContentLoaded", () => {
+  entries = JSON.parse(localStorage.getItem("user-entries")) || [];
+  refreshEntries()
+});
 
-entries = [];
-
+const userForm = document.getElementById('user-form');
 userForm.addEventListener("submit", (e) => {
   e.preventDefault()
   saveFormToStorage();
@@ -10,6 +12,7 @@ userForm.addEventListener("submit", (e) => {
 
 // Function to save form to local storage
 saveFormToStorage = () => {
+
   let userObj = {
     name: document.getElementById("name").value,
     email: document.getElementById("email").value,
@@ -44,10 +47,8 @@ checkValidity = (dob) => {
 // function to update the table with entries
 refreshEntries = () => {
   tableEntry = ``
-  userEntries = localStorage.getItem("user-entries");
-  userEntries = JSON.parse(userEntries)
-  userEntries.forEach((user) => {
+  entries.forEach((user) => {
     tableEntry += `<tr><td>${user.name}</td><td>${user.email}</td><td>${user.password}</td><td>${user.dob}</td><td>${user.terms}</td></tr>`
   });
-  document.getElementById("entries-table").innerHTML += tableEntry;
+  document.getElementById("entries-table").innerHTML = tableEntry;
 }
