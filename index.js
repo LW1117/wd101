@@ -20,14 +20,20 @@ saveFormToStorage = () => {
     dob: document.getElementById("dob").value,
     terms: document.getElementById("terms").checked
   };
-  if (checkValidity(userObj.dob)) {
+  if (checkValidity(userObj.dob, userObj.email)) {
     entries.push(userObj);
     sessionStorage.setItem("user-entries", JSON.stringify(entries))
   };
 };
 
-// Check if age is between 18 and 55
-checkValidity = (dob) => {
+// Check if age is between 18 and 55 and email is in the correct format
+checkValidity = (dob, email) => {
+  const emailPattern = /^[a-z0-9._%+-]+@[a-z0-9.-]+.[a-z]{2,}$/;
+  if (!emailPattern.test(email)) {
+    alert('Please enter a valid email address.');
+    return false;
+  }
+
   let bDate = new Date(dob);
   let today = new Date();
   let age = today.getFullYear() - bDate.getFullYear();
