@@ -1,0 +1,15 @@
+body {
+  background-color: whitesmoke;
+}
+
+#form-container {
+  width: 400px;
+}
+
+#entries-container {
+  width: 700px;
+}
+
+.table {
+  margin: auto;
+}
